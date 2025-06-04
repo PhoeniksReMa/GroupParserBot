@@ -1,3 +1,5 @@
+import os
+from dotenv import load_dotenv
 from pyrogram import Client, filters
 from decouple import config
 from pyrogram.types import Message
@@ -8,11 +10,11 @@ api_id = config('API_ID')
 api_hash = config('API_HASH')
 phone = config('PHONE')
 login = config('LOGIN')
-chat_id = 432475414
+load_dotenv()
 
 bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
-
+chat_id = os.getenv('CHAT_ID')
 
 @bot.on_message(filters.text)
 async def echo_handler(client: Client, message: Message):
