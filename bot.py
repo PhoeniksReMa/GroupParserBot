@@ -16,14 +16,14 @@ bot = Client(name=login, api_id=api_id, api_hash=api_hash, phone_number=phone)
 
 chat_id = os.getenv('CHAT_ID')
 
-@bot.on_message(filters.text)
+@bot.on_message()
 async def echo_handler(client: Client, message: Message):
     with open("keys.txt", "r", encoding="utf-8") as f:
         content = f.read().strip()
     words = [word.strip() for word in content.split(",") if word.strip()]
     pattern = re.compile(r'(' + r'|'.join(words) + r')', flags=re.IGNORECASE)
 
-    if message.chat.id == chat_id:
+    if message.chat.id == int(chat_id):
 
         if message.text == 'Ключи':
             print(f'Текущий список ключей: {words}')
