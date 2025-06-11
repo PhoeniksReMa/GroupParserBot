@@ -30,17 +30,17 @@ async def check_and_send_messages(client, message):
     pattern = re.compile(r'(' + r'|'.join(words) + r')', flags=re.IGNORECASE)
 
     if message.text is not None:
-        logging.info(f'Проверка:\n```\n{message.text}\n```\n\n{pattern}\n\n{pattern.search(message.text)}')
+        logging.info(f'\nПроверка:\n```\n{message.text}\n```\n\n{pattern}\n\n{pattern.search(message.text)}\n')
         if pattern.search(message.text):
             await client.forward_messages(chat_id=chat_id, from_chat_id=message.chat.id, message_ids=message.id)
 
     elif message.caption is not None:
-        logging.info(f'Проверка:\n```\n{message.caption}\n```\n\n{pattern}\n\n{pattern.search(message.caption)}')
+        logging.info(f'\nПроверка:\n```\n{message.caption}\n```\n\n{pattern}\n\n{pattern.search(message.caption)}\n')
         if pattern.search(message.caption):
             await client.forward_messages(chat_id=chat_id, from_chat_id=message.chat.id, message_ids=message.id)
 
     elif message.text is None or message.caption is None:
-        logging.error(f'Не получилось получить текст! {message}')
+        logging.error(f'\nНе получилось получить текст! {message}\n')
 
 async def check_command(client, message):
     with open("keys.txt", "r", encoding="utf-8") as f:
