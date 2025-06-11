@@ -1,5 +1,5 @@
 # 1. Берём официальный облегчённый образ Python
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # 2. Переключаемся в рабочую директорию /app
 WORKDIR /app
