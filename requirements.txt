@@ -1,8 +1,8 @@
 colorlog==6.9.0
 dotenv==0.9.9
 pyaes==1.6.1
-Pyrogram==2.0.106
 pyrotgfork==2.2.12
 PySocks==1.7.1
 python-decouple==3.8
 python-dotenv==1.1.0
+TgCrypto==1.2.5
