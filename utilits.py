@@ -27,7 +27,7 @@ async def check_and_send_messages(client, message):
     with open("keys.txt", "r", encoding="utf-8") as f:
         content = f.read().strip()
     words = [word.strip() for word in content.split(",") if word.strip()]
-    pattern = re.compile(r'(' + r'|'.join(words) + r')', flags=re.IGNORECASE)
+    pattern = re.compile(r'\b(?:' + '|'.join(words) + r')\w*\b', flags=re.IGNORECASE)
 
     if message.text is not None:
         logging.info(f'\nПроверка:\n```\n{message.text}\n```\n\n{pattern}\n\n{pattern.search(message.text)}\n')
